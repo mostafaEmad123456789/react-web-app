@@ -1,0 +1,29 @@
+version: '3'
+services: 
+    development_server:
+      image: development_server
+      container_name: development_server
+      build:
+        context: .
+        dockerfile: Dockerfile.dev
+      ports: 
+        - "3000:3000"
+      volumes:
+        - .:/app
+        - /app/node_modules
+
+    testing_server:
+      image: testing_server
+      container_name: testing_server
+      build: 
+        context: .
+        dockerfile: Dockerfile.test
+
+    production_server:
+      image: production_server
+      container_name: production_server
+      build: 
+        context: .
+        dockerfile: Dockerfile.build
+      ports: 
+        - "8080:80"
