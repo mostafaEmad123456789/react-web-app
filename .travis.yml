@@ -8,3 +8,16 @@ before_install:
 
 script:
   - docker run -e CI=true mostafaemad18697/react-web-app npm run test -- --coverage --passWithNoTests
+
+deploy:
+  provider: elasticbeanstalk
+  region: "me-south-1"
+  app: "web-app"
+  env: "Webapp-env"
+  bucket_name: "elasticbeanstalk-me-south-1-069395571727"
+  bucket_path: "web-app"
+  on:
+   branch: main
+  access_key_id: $userId
+  secret_access_key: 
+    secure: "$userSecret"
