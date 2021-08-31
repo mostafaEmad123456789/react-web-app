@@ -5,7 +5,6 @@ services:
 
 before_install:
   - docker build -t  development_server -f Dockerfile.dev .
-  - docker build -t  production_server -f Dockerfile.build .
 
 script:
   - docker run -e CI=true development_server npm run test -- --coverage --passWithNoTests
