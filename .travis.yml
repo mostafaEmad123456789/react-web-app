@@ -4,7 +4,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t  development_server -f Dockerfile .
+  - docker build -t  development_server -f Dockerfile.dev .
 
 script:
   - docker run -e CI=true development_server npm run test -- --coverage --passWithNoTests
@@ -20,4 +20,4 @@ deploy:
    branch: main
   access_key_id: "$AWS_ACCESS_KEY"
   secret_access_key: "$AWS_SECRET_KEY"
-  edge: true
+    
